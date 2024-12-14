@@ -54,7 +54,7 @@ const port = isProduction ? 80 : 9321
 const cors = require("cors");
 
 app.use(cors({
-  origin : "http://clap-project-web.s3-website.ap-northeast-2.amazonaws.com",
+  origin : "https://parksuhyun9321.com",
   credentials : true
 }));
 
