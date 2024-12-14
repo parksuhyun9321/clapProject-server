@@ -9,6 +9,7 @@ const UserScheme = mongoose.Schema({
     profileImg : String,
     job : String,
     hashTag : Array,
+    isExperience :Boolean,
     phone : {
         value : {
             type : String,
@@ -44,4 +45,4 @@ const UserScheme = mongoose.Schema({
 
 const UserModel = mongoose.model("User",UserScheme);
 
-module.exports = { UserModel }// build date : 2024. 12. 13. 오전 10:11:20
+module.exports = { UserModel }// build date : 2024. 12. 14. 오후 12:16:32

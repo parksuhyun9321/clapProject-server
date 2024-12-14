@@ -1,1 +1,1 @@
-class ResultResponse{constructor(s,e,t){this.resultCode=s,this.data=e,this.errorMsg=t}}module.exports=ResultResponse;// build date : 2024. 12. 13. 오전 10:11:20
+class ResultResponse{constructor(s,e,t){this.resultCode=s,this.data=e,this.errorMsg=t}}module.exports=ResultResponse;// build date : 2024. 12. 14. 오후 12:16:32
