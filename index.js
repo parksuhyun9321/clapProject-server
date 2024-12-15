@@ -58,7 +58,7 @@ app.use(cors({
   credentials : true
 }));
 
-app.get("/helth",(req, res) => {
+app.get("/health",(req, res) => {
   console.log("test")
 })
   
