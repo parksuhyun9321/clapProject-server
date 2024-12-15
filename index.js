@@ -58,13 +58,15 @@ app.use(cors({
   credentials : true
 }));
 
-app.get("/health",(req, res) => {
-  console.log("test")
-})
+
   
 mongoose.connect(process.env.CONNECT_URL)
 .then(() => {
     app.listen(port, () => {
+
+      app.get("/health",(req, res) => {
+        console.log("test")
+      })
         
         app.use(API_ROUTER_PROJECT);
         app.use(API_ROUTER_RESUME); 
