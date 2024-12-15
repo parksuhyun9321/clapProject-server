@@ -30,7 +30,7 @@ const API_ROUTER_TOKEN = require(isProduction ? "./public_dist/router/Token" : "
 const API_ROUTER_KEY = require(isProduction ? "./public_dist/router/Key" : "./public/router/Key");
 const API_ROUTER_MESSAGE = require(isProduction ? "./public_dist/router/Message" : "./public/router/Message");
 
-const ExperienceDelete = require("./public/api/api.experience");
+const ExperienceDelete = require(isProduction ? "./public_dist/api/api.experience" : "./public/api/api.experience");
 
 // const port = 80
 const port = isProduction ? 80 : 9321
