@@ -58,6 +58,10 @@ app.use(cors({
   credentials : true
 }));
 
+app.get("/health",(req, res) => {
+  res.status(200).send("success health check")
+})
+
 
   
 mongoose.connect(process.env.CONNECT_URL)
