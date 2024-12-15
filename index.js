@@ -64,9 +64,9 @@ mongoose.connect(process.env.CONNECT_URL)
 .then(() => {
     app.listen(port, () => {
 
-      app.get("/health",(req, res) => {
-        res.send("success server")
-      })
+        app.get("/",(req, res) => {
+          res.send("success server")
+        })
         
         app.use(API_ROUTER_PROJECT);
         app.use(API_ROUTER_RESUME); 
