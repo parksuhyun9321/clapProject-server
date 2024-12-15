@@ -72,7 +72,7 @@ mongoose.connect(process.env.CONNECT_URL)
 
         app.use(API_ROUTER_MESSAGE);
 
-        ExperienceDelete(00, 00);
+        ExperienceDelete(0, 0);
 
         console.log("connect")
     })
