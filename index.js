@@ -35,12 +35,12 @@ const ExperienceDelete = require(isProduction ? "./public_dist/api/api.experienc
 // const port = 80
 const port = isProduction ? 80 : 9321
 
-// const cors = require("cors");
+const cors = require("cors");
 
-// app.use(cors({
-//   origin : "*",
-//   credentials : true
-// }));
+app.use(cors({
+  origin : "https://d1ib93bo41ka9b.cloudfront.net",
+  credentials : true
+}));
 
 app.get("/health",(req, res) => {
   res.status(200).send("success health check")
