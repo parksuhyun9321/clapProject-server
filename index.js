@@ -54,7 +54,7 @@ const port = isProduction ? 80 : 9321
 const cors = require("cors");
 
 app.use(cors({
-  origin : "https://parksuhyun9321.com",
+  origin : "*",
   credentials : true
 }));
 
