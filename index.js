@@ -12,6 +12,7 @@ app.use(bodyParser.json({limit:"10000mb"})); /** application/json */
 app.use(bodyParser.urlencoded({limit:"10000mb",extended:true}));
 
 const fileUpload = require("express-fileupload");
+
 app.use(fileUpload());
 app.use("/contents", express.static("contents"));
 
@@ -29,41 +30,23 @@ const API_ROUTER_TOKEN = require(isProduction ? "./public_dist/router/Token" : "
 const API_ROUTER_KEY = require(isProduction ? "./public_dist/router/Key" : "./public/router/Key");
 const API_ROUTER_MESSAGE = require(isProduction ? "./public_dist/router/Message" : "./public/router/Message");
 
-function logAtSpecificTime(targetHour, targetMinute) {
-    const now = new Date();
-    const target = new Date();
-  
-    target.setHours(targetHour, targetMinute, 0, 0); // 특정 시각 설정
-    if (target < now) {
-      target.setDate(target.getDate() + 1); // 목표 시각이 이미 지나갔다면 다음 날로 설정
-    }
-  
-    const delay = target - now; // 현재 시각부터 목표 시각까지의 밀리초 차이
-
-    let timer = setTimeout(() => {
-      console.log(`지정된 시간 ${targetHour}:${targetMinute}에 메시지 출력`);
-      logAtSpecificTime(targetHour, targetMinute); // 매일 반복 실행
-
-      timer = null;
-    }, delay);
-  }
+const ExperienceDelete = require("./public/api/api.experience");
 
 // const port = 80
 const port = isProduction ? 80 : 9321
 
-const cors = require("cors");
+// const cors = require("cors");
 
-app.use(cors({
-  origin : "*",
-  credentials : true
-}));
+// app.use(cors({
+//   origin : "*",
+//   credentials : true
+// }));
 
 app.get("/health",(req, res) => {
   res.status(200).send("success health check")
 })
 
 
-  
 mongoose.connect(process.env.CONNECT_URL)
 .then(() => {
     app.listen(port, () => {
@@ -74,7 +57,6 @@ mongoose.connect(process.env.CONNECT_URL)
         
         app.use(API_ROUTER_PROJECT);
         app.use(API_ROUTER_RESUME); 
-        // app.use(API_ROUTER_POST);
 
         app.use(API_ROUTER_MYINFO);
         app.use(API_ROUTER_HASHTAG);
@@ -89,6 +71,8 @@ mongoose.connect(process.env.CONNECT_URL)
         app.use(API_ROUTER_KEY);
 
         app.use(API_ROUTER_MESSAGE);
+
+        ExperienceDelete(00, 00);
 
         console.log("connect")
     })

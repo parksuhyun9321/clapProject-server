@@ -29,4 +29,4 @@ const MessageScheme = mongoose.Schema({
 
 const MessageModel = mongoose.model("Message",MessageScheme);
 
-module.exports = { MessageModel }// build date : 2024. 12. 14. 오후 12:16:32
+module.exports = { MessageModel }// build date : 2024. 12. 15. 오후 11:31:12
