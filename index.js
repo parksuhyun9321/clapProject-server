@@ -49,7 +49,7 @@ function logAtSpecificTime(targetHour, targetMinute) {
   }
 
 // const port = 80
-const port = isProduction ? 443 : 9321
+const port = isProduction ? 80 : 9321
 
 const cors = require("cors");
 
