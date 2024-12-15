@@ -58,8 +58,10 @@ app.use(cors({
   credentials : true
 }));
 
-
- 
+app.get("/helth",(req, res) => {
+  console.log("test")
+})
+  
 mongoose.connect(process.env.CONNECT_URL)
 .then(() => {
     app.listen(port, () => {
