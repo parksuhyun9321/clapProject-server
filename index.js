@@ -40,7 +40,7 @@ const cors = require("cors");
 app.use(express.static(path.join(__dirname, 'build')));
 
 app.use(cors({
-  origin : "*",
+  origin : "https://parksuhyun9321.com",
   credentials : true
 }));
 
