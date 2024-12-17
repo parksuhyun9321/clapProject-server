@@ -33,12 +33,14 @@ const API_ROUTER_MESSAGE = require(isProduction ? "./public_dist/router/Message"
 const ExperienceDelete = require(isProduction ? "./public_dist/api/api.experience" : "./public/api/api.experience");
 
 // const port = 80
-const port = isProduction ? 80 : 9321
+const port = isProduction ? 80 : 9321;
 
 const cors = require("cors");
 
+app.use(express.static(path.join(__dirname, 'build')));
+
 app.use(cors({
-  origin : "https://d1ib93bo41ka9b.cloudfront.net",
+  origin : "*",
   credentials : true
 }));
 
