@@ -1,1 +1,1 @@
-let router=require("express").Router(),keyVerify=require("../api/api.key").keyVerify;router.get("/api/key/:key",async(e,r)=>{try{var t=e.params.key,a=await keyVerify(t);r.status(200).send(a)}catch(e){r.status(400).send(e)}}),module.exports=router;// build date : 2024. 12. 15. 오후 11:31:12
+let router=require("express").Router(),keyVerify=require("../api/api.key").keyVerify;router.get("/api/key/:key",async(e,r)=>{try{var t=e.params.key,a=await keyVerify(t);r.status(200).send(a)}catch(e){r.status(400).send(e)}}),module.exports=router;// build date : 2024. 12. 18. 오후 2:28:53

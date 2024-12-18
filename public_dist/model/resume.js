@@ -24,4 +24,4 @@ const ResumeScheme = mongoose.Schema({
 
 const ResumeModel = mongoose.model("Resume",ResumeScheme);
 
-module.exports = { ResumeModel }// build date : 2024. 12. 15. 오후 11:31:12
+module.exports = { ResumeModel }// build date : 2024. 12. 18. 오후 2:28:53
