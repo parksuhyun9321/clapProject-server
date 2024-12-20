@@ -23,30 +23,27 @@ function ExperienceDelete(targetHour, targetMinute) {
         /** 현재 시각부터 목표 시각까지의 밀리초 차이 */
         const delay = target - now; 
     
-        let timer = setTimeout(() => {
+        let timer = setTimeout(async () => {
+
+            const userList = await UserModel.find({isExperience : true});
+
+            if(userList.length > 0) {
+
+                await UserModel.deleteMany({isExperience : true});
+
+                for(let user of userList) {
+                    /** @type {string} 유저 폴더를 생성할 경로 */
+                    const BASE_FILE_URL = path.join(__dirname, "..","..",`/${process.env["FILE_DIRECTORY_NAME"]}`);
+                    const resultPath = path.join(BASE_FILE_URL, user["id"]);
     
-            UserModel.find({isExperience : true})
-            .then(rs => {
-        
-                if(rs.length > 0) {
-                    UserModel.deleteMany({isExperience : true})
-                    .then(() => {
-                        for(let user of rs) {
-                            /** @type {string} 유저 폴더를 생성할 경로 */
-                            const BASE_FILE_URL = path.join(__dirname, "..","..",`/${process.env["FILE_DIRECTORY_NAME"]}`);
-                            const resultPath = path.join(BASE_FILE_URL, user["id"]);
-            
-                            if(fs.existsSync(resultPath)) fs.rmSync(resultPath, {recursive : true, force : true});
-    
-                            /** 함수 재 호출 */
-                            logAtSpecificTime(targetHour, targetMinute);
-                        }
-                    })
-         
+                    if(fs.existsSync(resultPath)) fs.rmSync(resultPath, {recursive : true, force : true});
                 }
-                
-            })
-     
+            }
+
+            /** 함수 재 호출 */
+            ExperienceDelete(targetHour, targetMinute);
+
+            clearTimeout(timer);
             timer = null;
         }, delay);
     }

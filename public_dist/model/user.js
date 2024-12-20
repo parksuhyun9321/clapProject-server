@@ -45,4 +45,4 @@ const UserScheme = mongoose.Schema({
 
 const UserModel = mongoose.model("User",UserScheme);
 
-module.exports = { UserModel }// build date : 2024. 12. 19. 오후 12:38:49
+module.exports = { UserModel }// build date : 2024. 12. 20. 오후 2:58:21
